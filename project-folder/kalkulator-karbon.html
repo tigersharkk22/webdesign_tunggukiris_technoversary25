@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png" type="image/png">
+    <title>Kalkulator Karbon - SMANDA AdiwiyataVerse</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo Memelihara Tumbuhan" class="logo-icon-image">
+                <span class="logo-text">SMANDA AdiwiyataVerse</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="artikel-sains.html">Artikel Sains</a></li>
+                <li><a href="aksi-hijau.html">Aksi Hijau</a></li>
+                <li><a href="kalkulator-karbon.html" class="active">Kalkulator Karbon</a></li>
+                <li><a href="pohon-rupiahmu.html">Pohon Rupiahmu</a></li>
+                <li class="nav-contact"><a href="contact.html" class="contact-btn">Hubungi Kami</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Kalkulator Karbon</h1>
+            <p class="page-subtitle">Hitung jejak karbonmu dan temukan cara menguranginya</p>
+        </div>
+    </section>
+
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-container">
+                <div class="calculator-intro">
+                    <div class="ecovera-small">
+                        <img src="vera.png" alt="Ecovera" class="ecovera-avatar">
+                        <p class="ecovera-message">Yuk, hitung jejak karbonmu hari ini! Jawab pertanyaan di bawah dengan jujur ya '_' </p>
+                    </div>
+                </div>
+
+                <form id="carbon-form" class="carbon-form">
+                    <div class="form-group">
+                        <label for="transport">
+                            Berapa kali kamu menggunakan kendaraan bermotor hari ini?
+                        </label>
+                        <input type="number" id="transport" name="transport" min="0" value="0" required>
+                        <small>1 perjalanan motor/mobil ≈ 2 kg CO₂</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="electricity">
+                            Berapa jam kamu menggunakan listrik (AC/lampu/komputer) hari ini?
+                        </label>
+                        <input type="number" id="electricity" name="electricity" min="0" value="0" step="0.5" required>
+                        <small>1 jam penggunaan listrik ≈ 0.5 kg CO₂</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plastic">
+                            Berapa botol/gelas plastik sekali pakai yang kamu gunakan hari ini?
+                        </label>
+                        <input type="number" id="plastic" name="plastic" min="0" value="0" required>
+                        <small>1 botol plastik ≈ 0.3 kg CO₂</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="food-waste">
+                            Apakah kamu membuang makanan hari ini?
+                        </label>
+                        <select id="food-waste" name="food-waste" required>
+                            <option value="0">Tidak ada</option>
+                            <option value="0.5">Sedikit (1 porsi kecil)</option>
+                            <option value="1">Sedang (1 porsi penuh)</option>
+                            <option value="2">Banyak (lebih dari 1 porsi)</option>
+                        </select>
+                        <small>Makanan terbuang menghasilkan gas metana yang berbahaya</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="water">
+                            Berapa menit kamu mandi hari ini?
+                        </label>
+                        <input type="number" id="water" name="water" min="0" value="10" required>
+                        <small>Mandi lebih dari 10 menit = pemborosan air dan energi</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paper">
+                            Berapa lembar kertas yang kamu gunakan hari ini?
+                        </label>
+                        <input type="number" id="paper" name="paper" min="0" value="0" required>
+                        <small>1 lembar kertas ≈ 0.01 kg CO₂</small>
+                    </div>
+
+                    <button type="submit" class="calculate-btn">Hitung Jejak Karbonku</button>
+                </form>
+
+                <div id="results" class="results-container" style="display: none;">
+                    <div class="results-header">
+                        <h3>📊 Hasil Perhitungan</h3>
+                    </div>
+                    <div class="results-content">
+                        <div class="total-emission">
+                            <span class="emission-label">Total Emisi Hari Ini:</span>
+                            <span class="emission-value" id="total-emission">0</span>
+                            <span class="emission-unit">kg CO₂</span>
+                        </div>
+                        <div class="emission-breakdown">
+                            <h4>Rincian Emisi:</h4>
+                            <ul id="breakdown-list"></ul>
+                        </div>
+                        <div class="recommendations">
+                            <h4>💡 Rekomendasi untuk Kamu:</h4>
+                            <ul id="recommendations-list"></ul>
+                        </div>
+                        <div class="impact-comparison">
+                            <p id="impact-text"></p>
+                        </div>
+                        <button id="recalculate" class="recalculate-btn">Hitung Ulang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">SMANDA AdiwiyataVerse</span>
+                </div>
+                <p class="footer-text">From School to Earth - Together, We Grow Green</p>
+                <p class="footer-copyright">&copy; 2025 SMA Negeri 2. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script src="./kalkulator.js"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png" type="image/png">
+    <title>Pohon Rupiahmu - SMANDA AdiwiyataVerse</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo Memelihara Tumbuhan" class="logo-icon-image">
+                <span class="logo-text">SMANDA AdiwiyataVerse</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="artikel-sains.html">Artikel Sains</a></li>
+                <li><a href="aksi-hijau.html">Aksi Hijau</a></li>
+                <li><a href="kalkulator-karbon.html">Kalkulator Karbon</a></li>
+                <li><a href="pohon-rupiahmu.html" class="active">Pohon Rupiahmu</a></li>
+                <li><a href="contact.html">Hubungi Kami</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header donation-header">
+        <div class="container">
+            <h1 class="page-title">Pohon Rupiahmu</h1>
+            <p class="page-subtitle">Tanam kebaikan dengan donasi untuk bibit pohon SMANDA</p>
+        </div>
+    </section>
+
+    <section class="donation-section">
+        <div class="container">
+            <div class="donation-container">
+                <div class="ecovera-donation">
+                    <img src="vera.png" alt="Ecovera" class="ecovera-avatar-large">
+                    <div class="ecovera-speech">
+                        <p>Hai! Aku Ecovera, siap bantu kamu menanam kebaikan lewat Pohon Rupiahmu!</p>
+                        <p>Setiap donasi akan digunakan untuk membeli dan menanam bibit pohon di area SMANDA. Mari bersama-sama menghijaukan sekolah kita!</p>
+                    </div>
+                </div>
+
+                <div class="donation-form-container">
+                    <h2 class="form-title">Pilih Nominal Donasi</h2>
+                    <p class="form-subtitle">1 bibit pohon = Rp 5.000</p>
+
+                    <div class="donation-options">
+                        <button class="donation-btn" data-amount="5000">
+                            <span class="amount">Rp 5.000</span>
+                            <span class="trees">= 1 bibit</span>
+                        </button>
+                        <button class="donation-btn" data-amount="10000">
+                            <span class="amount">Rp 10.000</span>
+                            <span class="trees">= 2 bibit</span>
+                        </button>
+                        <button class="donation-btn" data-amount="25000">
+                            <span class="amount">Rp 25.000</span>
+                            <span class="trees">= 5 bibit</span>
+                        </button>
+                        <button class="donation-btn" data-amount="50000">
+                            <span class="amount">Rp 50.000</span>
+                            <span class="trees">= 10 bibit</span>
+                        </button>
+                    </div>
+
+                    <div class="custom-amount">
+                        <label for="custom-donation">Atau masukkan nominal lain:</label>
+                        <div class="custom-input-group">
+                            <span class="currency">Rp</span>
+                            <input type="number" id="custom-donation" min="1000" step="1000" placeholder="10000">
+                        </div>
+                        <button id="custom-donate-btn" class="custom-donate-btn">Donasi Jumlah Ini</button>
+                    </div>
+
+                    <div id="estimation" class="estimation-display" style="display: none;">
+                        <div class="estimation-content">
+                            <h3>Estimasi Dampak Donasimu</h3>
+                            <div class="estimation-details">
+                                <div class="estimation-item">
+                                    <span class="estimation-label">Nominal Donasi:</span>
+                                    <span class="estimation-value" id="donation-amount">Rp 0</span>
+                                </div>
+                                <div class="estimation-item">
+                                    <span class="estimation-label">Setara dengan:</span>
+                                    <span class="estimation-value" id="tree-count">0 bibit pohon</span>
+                                </div>
+                                <div class="estimation-impact">
+                                    <p id="impact-message"></p>
+                                </div>
+                            </div>
+                            <button id="proceed-payment" class="proceed-btn">Lanjut ke Pembayaran</button>
+                        </div>
+                    </div>
+
+                    <div id="qris-display" class="qris-container" style="display: none;">
+                        <h3>Scan QRIS untuk Donasi</h3>
+                        <div class="qris-code">
+                            <div class="qris-placeholder">
+                                <img src="qriss.png" alt="QRIS DOTO untuk Donasi" width="200">
+                                <p class="qris-instruction">Scan dengan aplikasi: DANA, OVO, GoPay, ShopeePay, atau m-Banking</p>
+                                <p class="qris-amount">Total: <strong id="qris-amount">Rp 0</strong></p>
+                            </div>
+                            <p class="qris-instruction">Scan dengan aplikasi: DANA, OVO, GoPay, ShopeePay, atau m-Banking</p>
+                            <p class="qris-amount">Total: <strong id="qris-amount">Rp 0</strong></p>
+                        </div>
+                        <button id="confirm-payment" class="confirm-btn">Saya Sudah Bayar</button>
+                        <button id="cancel-payment" class="cancel-btn">Batal</button>
+                    </div>
+
+                    <div id="success-message" class="success-container" style="display: none;">
+                        <div class="success-content">
+                            <h3>Terima Kasih!</h3>
+                            <p class="success-text">Kamu baru saja ikut serta menumbuhkan pohon baru di bumi kita.</p>
+                            <div class="success-details">
+                                <p><strong>Donasi:</strong> <span id="success-amount">Rp 0</span></p>
+                                <p><strong>Bibit Pohon:</strong> <span id="success-trees">0 bibit</span></p>
+                            </div>
+                            <p class="success-message">Bibit pohon akan ditanam di area SMANDA dan kamu akan mendapat update melalui Instagram sekolah!</p>
+                            <button id="donate-again" class="donate-again-btn">Donasi Lagi</button>
+                            <a href="index.html" class="back-home-btn">Kembali ke Beranda</a>
+                        </div>
+                    </div>
+                </div>
+
+    <section class="why-donate">
+        <div class="container">
+            <h2 class="section-title">Mengapa Donasi Pohon Penting?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌍</div>
+                    <h3>Kurangi Emisi CO₂</h3>
+                    <p>1 pohon dewasa menyerap 22 kg CO₂ per tahun</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💨</div>
+                    <h3>Udara Lebih Bersih</h3>
+                    <p>Pohon menyaring polusi dan menghasilkan oksigen</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌡️</div>
+                    <h3>Suhu Lebih Sejuk</h3>
+                    <p>Area berpohon 2-8°C lebih dingin dari area tanpa pohon</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🦜</div>
+                    <h3>Habitat Satwa</h3>
+                    <p>Pohon menjadi rumah bagi burung dan serangga</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">SMANDA AdiwiyataVerse</span>
+                </div>
+                <p class="footer-text">From School to Earth - Together, We Grow Green</p>
+                <p class="footer-copyright">&copy; 2025 SMA Negeri 2. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script>
+        const donationBtns = document.querySelectorAll('.donation-btn');
+        const customDonateBtn = document.getElementById('custom-donate-btn');
+        const customDonationInput = document.getElementById('custom-donation');
+        const estimation = document.getElementById('estimation');
+        const qrisDisplay = document.getElementById('qris-display');
+        const successMessage = document.getElementById('success-message');
+        const proceedPayment = document.getElementById('proceed-payment');
+        const confirmPayment = document.getElementById('confirm-payment');
+        const cancelPayment = document.getElementById('cancel-payment');
+        const donateAgain = document.getElementById('donate-again');
+
+        let currentAmount = 0;
+
+        function showEstimation(amount) {
+            currentAmount = amount;
+            const trees = Math.floor(amount / 5000);
+            const remainder = amount % 5000;
+            
+            document.getElementById('donation-amount').textContent = `Rp ${amount.toLocaleString('id-ID')}`;
+            
+            let treeText = '';
+            if (trees > 0 && remainder > 0) {
+                treeText = `${trees} bibit penuh + ${(remainder/5000).toFixed(1)} bibit`;
+            } else if (trees > 0) {
+                treeText = `${trees} bibit pohon`;
+            } else {
+                treeText = `${(amount/5000).toFixed(1)} bibit pohon`;
+            }
+            document.getElementById('tree-count').textContent = treeText;
+            
+            let impactMsg = '';
+            if (trees >= 10) {
+                impactMsg = 'Luar biasa! Donasimu bisa menanam pohon sebanyak ini dan menyerap ~220 kg CO₂ per tahun!';
+            } else if (trees >= 5) {
+                impactMsg = 'Hebat! Kontribusimu sangat berarti untuk menghijaukan SMANDA!';
+            } else if (trees >= 1) {
+                impactMsg = 'Terima kasih! Setiap pohon berharga untuk masa depan bumi kita!';
+            } else {
+                impactMsg = 'Setiap rupiah berharga! Donasimu akan dikumpulkan untuk membeli bibit pohon.';
+            }
+            document.getElementById('impact-message').textContent = impactMsg;
+            
+            estimation.style.display = 'block';
+            qrisDisplay.style.display = 'none';
+            successMessage.style.display = 'none';
+        }
+
+        donationBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const amount = parseInt(btn.dataset.amount);
+                showEstimation(amount);
+            });
+        });
+
+        customDonateBtn.addEventListener('click', () => {
+            const amount = parseInt(customDonationInput.value);
+            if (amount && amount >= 1000) {
+                showEstimation(amount);
+            } else {
+                alert('Minimal donasi Rp 1.000');
+            }
+        });
+
+        proceedPayment.addEventListener('click', () => {
+            document.getElementById('qris-amount').textContent = `Rp ${currentAmount.toLocaleString('id-ID')}`;
+            estimation.style.display = 'none';
+            qrisDisplay.style.display = 'block';
+        });
+
+        confirmPayment.addEventListener('click', () => {
+            const trees = Math.floor(currentAmount / 5000);
+            document.getElementById('success-amount').textContent = `Rp ${currentAmount.toLocaleString('id-ID')}`;
+            document.getElementById('success-trees').textContent = `${trees > 0 ? trees : (currentAmount/5000).toFixed(1)} bibit`;
+            
+            const totalDonations = document.getElementById('total-donations');
+            const totalTrees = document.getElementById('total-trees');
+            const totalDonors = document.getElementById('total-donors');
+            
+            const currentTotal = parseInt(totalDonations.textContent.replace(/[^0-9]/g, '')) || 0;
+            const currentTreeCount = parseInt(totalTrees.textContent) || 0;
+            const currentDonorCount = parseInt(totalDonors.textContent) || 0;
+            
+            totalDonations.textContent = `Rp ${(currentTotal + currentAmount).toLocaleString('id-ID')}`;
+            totalTrees.textContent = currentTreeCount + trees;
+            totalDonors.textContent = currentDonorCount + 1;
+            
+            localStorage.setItem('totalDonations', currentTotal + currentAmount);
+            localStorage.setItem('totalTrees', currentTreeCount + trees);
+            localStorage.setItem('totalDonors', currentDonorCount + 1);
+            localStorage.setItem('treesPlanted', currentTreeCount + trees);
+            
+            qrisDisplay.style.display = 'none';
+            successMessage.style.display = 'block';
+        });
+
+        cancelPayment.addEventListener('click', () => {
+            qrisDisplay.style.display = 'none';
+            estimation.style.display = 'block';
+        });
+
+        donateAgain.addEventListener('click', () => {
+            successMessage.style.display = 'none';
+            estimation.style.display = 'none';
+            customDonationInput.value = '';
+        });
+
+        window.addEventListener('load', () => {
+            const savedDonations = localStorage.getItem('totalDonations') || 0;
+            const savedTrees = localStorage.getItem('totalTrees') || 0;
+            const savedDonors = localStorage.getItem('totalDonors') || 0;
+            
+            document.getElementById('total-donations').textContent = `Rp ${parseInt(savedDonations).toLocaleString('id-ID')}`;
+            document.getElementById('total-trees').textContent = savedTrees;
+            document.getElementById('total-donors').textContent = savedDonors;
+        });
+    </script>
+</body>
+</html>
