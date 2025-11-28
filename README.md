@@ -33,3 +33,4 @@ Cara Instalasi & Menjalankan Project
    * Buka Settings → Pages → pilih branch `main` → root (`/`)
    * Website akan otomatis aktif.
 
+https://tigersharkk22.github.io/SMANDA-ADIWIYATAVERSE/index.html
